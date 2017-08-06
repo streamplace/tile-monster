@@ -1,21 +1,50 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { connect } from "react-redux";
+import Cell from "./Cell";
+import styled from "styled-components";
+import { initGrid } from "./actions";
 
-class App extends Component {
+const GridContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
+
+const Grid = styled.div``;
+
+const Row = styled.div`
+  &:last-child {
+    border-bottom: 1px solid black;
+  }
+`;
+
+export class App extends Component {
+  componentWillMount() {
+    this.props.dispatch(initGrid(5, 7));
+  }
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <GridContainer>
+        <Grid>
+          {this.props.grid.map((row, y) =>
+            <Row key={y}>
+              {row.map((cell, x) => {
+                return <Cell key={`${x}-${y}`} x={x} y={y} />;
+              })}
+            </Row>
+          )}
+        </Grid>
+      </GridContainer>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    grid: state.grid
+  };
+};
+
+export default connect(mapStateToProps)(App);
