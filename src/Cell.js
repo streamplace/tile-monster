@@ -19,7 +19,6 @@ const StyledCell = styled.div`
 
 export class Cell extends Component {
   handleClick() {
-    console.log("hi");
     if (this.props.cell.clickedNum === 0) {
       this.props.dispatch(turnBlue(this.props.x, this.props.y));
     } else if (this.props.cell.clickedNum === 1) {

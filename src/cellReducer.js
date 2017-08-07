@@ -27,9 +27,7 @@ export default function cellReducer(state = initialState, action) {
   if (action.y !== state.y) {
     return state;
   }
-  // if (action.clickedNum !== state.clickedNum) {
-  //   return state;
-  // }
+
   /**
    * EVERYTHING BELOW THIS POINT ONLY HAPPENS IF action.x === state.x and action.y === state.y
    */
@@ -37,7 +35,7 @@ export default function cellReducer(state = initialState, action) {
   if (action.type === TURN_BLUE) {
     return {
       ...state,
-      backgroundColor: "blue",
+      backgroundColor: "#3fa9d3",
       clickedNum: 1
     };
   }
@@ -45,7 +43,7 @@ export default function cellReducer(state = initialState, action) {
   if (action.type === TURN_BROWN) {
     return {
       ...state,
-      backgroundColor: "brown",
+      backgroundColor: "#A8530C  ",
       clickedNum: 2
     };
   }
@@ -53,7 +51,7 @@ export default function cellReducer(state = initialState, action) {
   if (action.type === TURN_GREEN) {
     return {
       ...state,
-      backgroundColor: "green",
+      backgroundColor: "#DAF7A6",
       clickedNum: 3
     };
   }
