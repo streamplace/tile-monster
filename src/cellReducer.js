@@ -1,4 +1,10 @@
-import { TURN_BLUE, INIT_GRID } from "./actions";
+import {
+  TURN_BLUE,
+  TURN_BROWN,
+  TURN_GREEN,
+  TURN_GREY,
+  INIT_GRID
+} from "./actions";
 
 const initialState = {};
 
@@ -7,7 +13,8 @@ export default function cellReducer(state = initialState, action) {
     return {
       ...state,
       x: action.x,
-      y: action.y
+      y: action.y,
+      clickedNum: 0
     };
   }
 
@@ -20,6 +27,7 @@ export default function cellReducer(state = initialState, action) {
   if (action.y !== state.y) {
     return state;
   }
+
   /**
    * EVERYTHING BELOW THIS POINT ONLY HAPPENS IF action.x === state.x and action.y === state.y
    */
@@ -27,7 +35,31 @@ export default function cellReducer(state = initialState, action) {
   if (action.type === TURN_BLUE) {
     return {
       ...state,
-      backgroundColor: "blue"
+      backgroundColor: "#3fa9d3",
+      clickedNum: 1
+    };
+  }
+
+  if (action.type === TURN_BROWN) {
+    return {
+      ...state,
+      backgroundColor: "#A8530C  ",
+      clickedNum: 2
+    };
+  }
+
+  if (action.type === TURN_GREEN) {
+    return {
+      ...state,
+      backgroundColor: "#DAF7A6",
+      clickedNum: 3
+    };
+  }
+  if (action.type === TURN_GREY) {
+    return {
+      ...state,
+      backgroundColor: "#eee",
+      clickedNum: 0
     };
   }
 

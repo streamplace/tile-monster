@@ -22,7 +22,7 @@ const Row = styled.div`
 
 export class App extends Component {
   componentWillMount() {
-    this.props.dispatch(initGrid(5, 7));
+    this.props.dispatch(initGrid(60, 34));
   }
   render() {
     return (

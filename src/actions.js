@@ -15,3 +15,30 @@ export const turnBlue = (x, y) => {
     y
   };
 };
+
+export const TURN_BROWN = "TURN_BROWN";
+export const turnBrown = (x, y) => {
+  return {
+    type: TURN_BROWN,
+    x,
+    y
+  };
+};
+
+export const TURN_GREEN = "TURN_GREEN";
+export const turnGreen = (x, y) => {
+  return {
+    type: TURN_GREEN,
+    x,
+    y
+  };
+};
+
+export const TURN_GREY = "TURN_GREY";
+export const turnGrey = (x, y) => {
+  return {
+    type: TURN_GREY,
+    x,
+    y
+  };
+};

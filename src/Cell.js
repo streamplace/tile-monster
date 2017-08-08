@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { turnBlue } from "./actions";
+import { turnBlue, turnBrown, turnGreen, turnGrey } from "./actions";
 
 const StyledCell = styled.div`
   display: inline-block;
@@ -10,8 +10,8 @@ const StyledCell = styled.div`
   &:last-child {
     border-right: 1px solid black;
   }
-  width: 75px;
-  height: 75px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
   user-select: none;
   background-color: ${props => props.cell.backgroundColor || "#eee"};
@@ -19,7 +19,15 @@ const StyledCell = styled.div`
 
 export class Cell extends Component {
   handleClick() {
-    this.props.dispatch(turnBlue(this.props.x, this.props.y));
+    if (this.props.cell.clickedNum === 0) {
+      this.props.dispatch(turnBlue(this.props.x, this.props.y));
+    } else if (this.props.cell.clickedNum === 1) {
+      this.props.dispatch(turnBrown(this.props.x, this.props.y));
+    } else if (this.props.cell.clickedNum === 2) {
+      this.props.dispatch(turnGreen(this.props.x, this.props.y));
+    } else if (this.props.cell.clickedNum === 3) {
+      this.props.dispatch(turnGrey(this.props.x, this.props.y));
+    }
   }
 
   render() {
