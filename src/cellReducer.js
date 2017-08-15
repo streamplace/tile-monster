@@ -58,7 +58,7 @@ export default function cellReducer(state = initialState, action) {
   if (action.type === TURN_GREY) {
     return {
       ...state,
-      backgroundColor: "#eee",
+      backgroundColor: "white",
       clickedNum: 0
     };
   }

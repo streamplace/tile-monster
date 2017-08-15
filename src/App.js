@@ -16,7 +16,7 @@ const Grid = styled.div``;
 
 const Row = styled.div`
   &:last-child {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #eee;
   }
 `;
 
