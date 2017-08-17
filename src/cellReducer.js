@@ -3,7 +3,8 @@ import {
   TURN_BROWN,
   TURN_GREEN,
   TURN_GREY,
-  INIT_GRID
+  INIT_GRID,
+  EXPORT_GRID
 } from "./actions";
 
 const initialState = {};
@@ -15,6 +16,13 @@ export default function cellReducer(state = initialState, action) {
       x: action.x,
       y: action.y,
       clickedNum: 0
+    };
+  }
+
+  if (action.type === EXPORT_GRID) {
+    console.log(JSON.stringify(state));
+    return {
+      ...state
     };
   }
 

@@ -3,6 +3,7 @@ import "./App.css";
 import { connect } from "react-redux";
 import Cell from "./Cell";
 import styled from "styled-components";
+import devUI from "./devUI";
 import { initGrid } from "./actions";
 
 const GridContainer = styled.div`
@@ -10,6 +11,7 @@ const GridContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
+  z-index: 1;
 `;
 
 const Grid = styled.div``;

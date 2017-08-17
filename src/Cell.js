@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { turnBlue, turnBrown, turnGreen, turnGrey } from "./actions";
+import {
+  turnBlue,
+  turnBrown,
+  turnGreen,
+  turnGrey,
+  exportGrid
+} from "./actions";
 
 const StyledCell = styled.div`
   display: inline-block;
@@ -10,6 +16,7 @@ const StyledCell = styled.div`
   &:last-child {
     border-right: 1px solid #eee;
   }
+  z-index: 3;
   width: 20px;
   height: 20px;
   cursor: pointer;
@@ -33,20 +40,29 @@ export class Cell extends Component {
       } else if (this.props.cell.clickedNum === 3) {
         this.props.dispatch(turnGrey(this.props.x, this.props.y));
       }
-      console.log(e.screenX, e.screenY);
+      //console.log(e.screenX, e.screenY);
     }
   }
 
   handleMouseDown(e) {
-    // this.cell.e.addEventListener("mouseover", function() {
     mouseDown++;
-    console.log(mouseDown);
-    // })
+    if (this.props.cell.clickedNum === 0) {
+      this.props.dispatch(turnBlue(this.props.x, this.props.y));
+    } else if (this.props.cell.clickedNum === 1) {
+      this.props.dispatch(turnBrown(this.props.x, this.props.y));
+    } else if (this.props.cell.clickedNum === 2) {
+      this.props.dispatch(turnGreen(this.props.x, this.props.y));
+    } else if (this.props.cell.clickedNum === 3) {
+      this.props.dispatch(turnGrey(this.props.x, this.props.y));
+    }
+
+    if (e.shiftKey) {
+      this.props.dispatch(exportGrid());
+    }
   }
 
   handleMouseUp(e) {
     mouseDown--;
-    console.log(mouseDown);
   }
 
   render() {
