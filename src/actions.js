@@ -7,6 +7,22 @@ export const initGrid = (width, height) => {
   };
 };
 
+export const EXPORT_GRID = "EXPORT_GRID";
+export const exportGrid = (width, height) => {
+  return {
+    type: EXPORT_GRID,
+    width,
+    height
+  };
+};
+export const CREATE_MOUNTAIN = "CREATE_MOUNTAIN";
+export const creMount = (width, height) => {
+  return {
+    type: CREATE_MOUNTAIN,
+    width,
+    height
+  };
+};
 export const TURN_BLUE = "TURN_BLUE";
 export const turnBlue = (x, y) => {
   return {
